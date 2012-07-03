@@ -26,6 +26,7 @@ VALID_OPS = (
     'rand_str_ascii',
     'rand_str_all',
     'rand_str_letters',
+    'prefix_rand_str_ascii',
 )
 """
 List of valid operation, for sanity checking test file
@@ -53,6 +54,9 @@ def apply_op(current_value, conf):
         current_value = ''.join([random.choice(CHARS_ALL) for i in xrange(length)])
     elif op == 'rand_int':
         current_value = random.randint(conf['min'], conf['max'])
+    elif op == 'prefix_rand_str_ascii':
+        length = random.randint(conf.get('min', 1), conf['max'])
+        current_value = conf['prefix'] + ''.join([random.choice(CHARS_LETTERS) for i in xrange(length)])
 
     return current_value
 
