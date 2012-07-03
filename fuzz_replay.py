@@ -127,6 +127,22 @@ class REPLHandler(SimpleHandler):
         """Start over."""
         self._cur = 0
 
+    def do_s(self, args=1):
+        """Seek to a specific request."""
+        try:
+            pos = int(args)
+        except Exception:
+            print 'Invalid argument {0}. Integer expected.'.format(args)
+
+        if pos < 0:
+            pos = 0
+        elif pos > len(self._requests):
+            pos = len(self._requests)
+
+        self._cur = pos
+        print 'Current position: {0}'.format(self._cur)
+
+
     def do_p(self, args=1):
         """Print n requests."""
 
