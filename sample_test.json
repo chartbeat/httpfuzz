@@ -1,0 +1,33 @@
+{
+    "tests": [
+        {
+            "name": "test_name",
+            "description": "Description of the test.",
+            "path": "/search",
+            "method": "GET",
+            "protocol": "HTTP/1.1",
+            "num_requests": 1000,
+            "query": {
+                "q": {
+                    "op": "rand_str_all",
+                    "min": 1,
+                    "max": 10
+                },
+                "numeric": {
+                    "op": "rand_int",
+                    "min": -100,
+                    "max": 100
+                },
+                "incremental": {
+                    "op": "inc",
+                    "initial": 0,
+                    "step": 10
+                },
+                "fixed": {
+                    "op": "set",
+                    "initial": "fixed_value"
+                }
+            }
+        }
+    ]
+}
